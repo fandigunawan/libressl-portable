@@ -12,11 +12,11 @@ if [ ! -d openbsd ]; then
 		git clone $LIBRESSL_GIT/openbsd
 	fi
 fi
-(cd openbsd
- git checkout $openbsd_branch
- git pull --rebase
- git reset --hard 17acf634c43d369f9330b3a73ab696e0eb88f74c
- )
+COMMIT=4257c55b2fc5329aa20b33559f0bce13aa33daba
+wget -O openbsd.zip https://github.com/libressl-portable/openbsd/archive/$COMMIT.zip
+rm -rf openbsd-$COMMIT
+unzip openbsd.zip
+mv openbsd-$COMMIT openbsd
 
 # setup source paths
 CWD=`pwd`
